@@ -1,5 +1,95 @@
 # Style Guide
 
+## Tailwind CSS Standards
+
+**Primary approach**: Use Tailwind utilities for all styling.
+
+### Core Rules
+- Use Tailwind first; custom CSS only for global styles or complex animations
+- Never mix BEM classes with Tailwind in same component
+- Extract repeated patterns to Tailwind `@apply` in global CSS
+- Use Tailwind's spacing scale (4px base): `p-4` (16px), `m-2` (8px)
+- Always use responsive prefixes: `md:`, `lg:`, `xl:` for breakpoints
+- Group utilities logically: layout → sizing → spacing → colors → effects → hover
+- Use arbitrary values sparingly: `w-[322px]` only when no Tailwind value fits
+- Never hardcode colors; use Tailwind palette defined in `tailwind.config.js`
+
+### Utility Organization Pattern
+```tsx
+// Order: Display/Layout → Sizing → Spacing → Colors → Effects → Hover
+<div className="
+  flex items-center justify-between
+  w-full h-auto
+  p-4 mb-6 gap-2
+  bg-white text-gray-900
+  rounded-lg shadow-sm
+  hover:shadow-md transition-shadow
+">
+  Content
+</div>
+```
+
+### App-Specific Patterns
+
+**Dark mode**: Always include dark mode variants
+```tsx
+className="bg-white dark:bg-gray-950 text-gray-900 dark:text-white"
+```
+
+**Section containers**
+```tsx
+className="min-h-screen w-full px-6 py-20"
+```
+
+**Cards**
+```tsx
+className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-950"
+```
+
+**Grids**
+```tsx
+className="grid gap-6 md:grid-cols-3"
+```
+
+**Buttons/Interactive**
+```tsx
+className="rounded-lg p-2 transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
+```
+
+**Sidebar/Fixed layout**
+```tsx
+className="fixed left-0 top-0 h-screen w-60 flex-col"
+```
+
+**Navigation**
+```tsx
+className="sticky top-0 z-40 flex items-center justify-between border-b border-gray-200"
+```
+
+### Conditional Classes
+```tsx
+import clsx from 'clsx';
+
+className={clsx(
+  'base-styles',
+  variant === 'primary' && 'primary-styles',
+  disabled && 'disabled-styles'
+)}
+```
+
+## Global CSS
+
+Use `@apply` for repeated patterns in `styles/globals.css`:
+```css
+.card {
+  @apply p-4 bg-white rounded-lg shadow-md border border-gray-200;
+}
+
+.btn-primary {
+  @apply px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition;
+}
+```
+
 ## Formatting
 - **Indent**: 2 spaces
 - **Line Length**: 100 chars (soft), 120 chars (hard limit)
@@ -8,135 +98,6 @@
 - **Trailing Commas**: Use in multiline objects/arrays
 
 ## Naming Conventions
-- **Constants**: UPPER_SNAKE_CASE (truly constant values only)
-- **Variables/Functions**: camelCase
-- **Components**: PascalCase
-- **CSS Classes**: kebab-case (BEM: .card, .card__title, .card__button--primary)
-- **Files**: Match export (Component.tsx, utils.ts)
-
-## Imports
-```typescript
-// Order: External → Internal → Types (alphabetical)
-import React, { useState } from 'react';
-import { Button } from 'react-ui';
-
-import { useAuth } from '@/hooks/useAuth';
-import { Header } from '@/components/sections/Header';
-import type { User } from '@/types/user';
-```
-
-## Functions
-```typescript
-// Arrow functions for exports/callbacks
-const calculateTotal = (items: Item[]): number => {
-  return items.reduce((sum, item) => sum + item.price, 0);
-};
-
-// Always specify return type
-const handleClick = (): void => { /* ... */ };
-```
-
-## Components
-```typescript
-// Props interface → Component → Export
-interface CardProps {
-  title: string;
-  onClick?: () => void;
-}
-
-const Card: React.FC<CardProps> = ({ title, onClick }) => {
-  // 1. Hooks at top
-  const [state, setState] = useState('');
-  
-  // 2. Event handlers
-  const handleClick = useCallback(() => { /* ... */ }, []);
-  
-  // 3. Effects
-  useEffect(() => { /* ... */ }, [state]);
-  
-  // 4. Render
-  return <div>{title}</div>;
-};
-
-export default Card;
-```
-
-## TypeScript
-```typescript
-// Interfaces for object shapes
-interface User {
-  id: string;
-  name: string;
-}
-
-// Types for unions/primitives
-type Status = 'pending' | 'success' | 'error';
-
-// No any, use unknown
-const process = (data: unknown): void => { /* ... */ };
-
-// Explicit return types
-const getUser = (id: string): User | null => { /* ... */ };
-```
-
-## CSS/Tailwind
-```tsx
-// BEM methodology
-<div className="card card--large">
-  <h3 className="card__title">Title</h3>
-  <button className="card__button card__button--primary">Action</button>
-</div>
-
-// Or Tailwind
-<div className="p-4 bg-white rounded-lg shadow">
-  <h3 className="text-lg font-semibold">Title</h3>
-  <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700">Action</button>
-</div>
-```
-
-## Comments
-Only comment WHY, not WHAT. Code should be self-explanatory.
-```typescript
-// ✅ Explains non-obvious logic
-// Can't use destructuring here - React DevTools has trouble
-// with arrow function component names
-const Component = function MyComponent() { /* ... */ };
-
-// ❌ States the obvious
-// Get the user
-const getUser = (id: string) => { /* ... */ };
-```
-
-## Git Commits
-```
-type(scope): brief description
-
-Optional detailed explanation.
-
-Fixes #123
-```
-
-Types: `feat`, `fix`, `refactor`, `perf`, `style`, `docs`, `test`, `chore`
-
-Examples:
-```
-feat(auth): add login form
-fix(button): fix disabled state styling
-perf(rendering): memoize expensive component
-docs(readme): update installation steps
-```
-
-## File Structure
-```
-src/
-├── components/
-│   ├── sections/   (Hero, Features, etc.)
-│   ├── common/     (Button, Card, etc.)
-│   └── layouts/    (MainLayout, etc.)
-├── hooks/          (useAuth, useForm, etc.)
-├── utils/          (formatDate, calculateTotal, etc.)
-├── types/          (User, API types, etc.)
-├── services/       (API calls)
-├── styles/         (Global CSS)
-└── constants/      (Config values)
-```
+- **Components**: PascalCase (Button.tsx)
+- **Utilities/Hooks**: camelCase (formatDate.ts)
+- **CSS Classes**: kebab-case (.card, .card__title)
