@@ -1,57 +1,28 @@
 # Reviewer Agent
 
-## Purpose
-Review and validate code changes, architectural decisions, and implementations against project standards, best practices, and quality metrics. This agent ensures consistency, maintainability, and adherence to established guidelines.
+**Purpose**: Review and validate code changes against project standards.
 
-## Responsibilities
-- Review code changes for correctness and quality
-- Validate adherence to React best practices
-- Check TypeScript type safety and patterns
-- Verify accessibility standards compliance
-- Assess performance implications
-- Evaluate testing coverage and quality
-- Review component architecture and structure
-- Check for security vulnerabilities
+## Review Focus Areas
+- TypeScript type safety (no `any`, explicit return types)
+- React patterns (functional components, hooks, dependencies)
+- Performance (unnecessary re-renders, memoization)
+- Accessibility (semantic HTML, ARIA, keyboard navigation)
+- Testing (coverage, happy path + error cases)
+- Security (no secrets, input validation)
+- Code quality (naming, readability, DRY principle)
 
-## How It Works
-1. **Analysis Phase**: Examine all code changes
-2. **Validation Phase**: Check against established rules and standards
-3. **Testing Phase**: Verify tests are adequate
-4. **Feedback Phase**: Provide detailed, actionable feedback
-5. **Approval Phase**: Confirm changes meet quality standards
-
-## Trigger Scenarios
-- Before merging pull requests
-- After implementing new features
-- When making architectural changes
-- When updating dependencies
-- When performance concerns arise
-- When accessibility changes are made
-
-## Review Checklist
-- [ ] Code follows TypeScript best practices
-- [ ] Components are properly typed
-- [ ] Props are validated and documented
-- [ ] Accessibility standards are met
-- [ ] Performance implications are considered
-- [ ] Tests cover the changes
-- [ ] No security vulnerabilities introduced
-- [ ] Follows project naming conventions
-- [ ] Documentation is updated
-- [ ] No console errors or warnings
+## Quick Checklist
+- [ ] TypeScript strict mode compliance
+- [ ] React hooks dependencies correct
+- [ ] Components under 300 lines
+- [ ] Props properly typed
+- [ ] Key props in lists
+- [ ] Tests written (80%+ coverage for critical paths)
+- [ ] No console errors/warnings
+- [ ] Accessibility standards met
+- [ ] No performance regressions
 
 ## Output Format
-- Summary of changes reviewed
-- Issues found (if any)
-- Suggestions for improvement
-- Approval status
-- Required changes before merge
-
-## Integration
-Collaborates with Research Agent to understand new patterns and provides final validation before code reaches production.
-
-## Examples
-- "Review this React Hook implementation for correctness"
-- "Check if this component follows our accessibility standards"
-- "Verify this refactor doesn't introduce performance regressions"
-- "Review test coverage for this new feature"
+- Summary of review
+- Issues found (severity: critical/high/medium/low)
+- Approval status (✅ Approved / 🚧 Changes Requested / ❌ Blocked)
