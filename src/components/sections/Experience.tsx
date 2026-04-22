@@ -75,10 +75,10 @@ export function Experience() {
                       {exp.achievements.map((achievement, aidx) => (
                         <li
                           key={aidx}
-                          className="flex items-start gap-2 text-gray-600 dark:text-gray-300"
+                          className="flex gap-2 text-gray-600 dark:text-gray-300"
                         >
-                          <span className="mt-1 h-1.5 w-1.5 rounded-full bg-cyan-500 flex-shrink-0" />
-                          {achievement}
+                          <span className="h-2 w-2 rounded-full bg-cyan-500 flex-shrink-0 mt-1.5" />
+                          <span>{achievement}</span>
                         </li>
                       ))}
                     </ul>

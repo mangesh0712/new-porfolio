@@ -11,7 +11,7 @@ export function Hero() {
   const [titleNumber, setTitleNumber] = useState(0)
   const titles = [
     'Full Stack Developer',
-    'UI/UX Enthusiast',
+    'UI/UX hero',
     'Problem Solver',
     'Tech Innovator',
   ]

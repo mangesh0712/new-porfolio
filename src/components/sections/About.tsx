@@ -1,8 +1,17 @@
-import { SectionWrapper } from '@/components/layout/SectionWrapper'
-import { Badge } from '@/components/ui/Badge'
-import { motion } from 'framer-motion'
+import { SectionWrapper } from "@/components/layout/SectionWrapper";
+import { Badge } from "@/components/ui/Badge";
+import { motion } from "framer-motion";
 
 export function About() {
+  const whatIBring = [
+    "I’m a Senior React Engineer with 6+ years of experience building scalable, high-performance web applications at enterprise scale. Currently at ConnectWise, I architect solutions for PSA and CPQ platforms, handling complex workflows and large data systems.",
+
+    "I’ve optimized quote builders to reduce re-renders by 60%, built data grids handling 50,000+ records under 500ms, and developed real-time pricing systems integrating multiple APIs. My focus goes beyond code—I design systems aligned with business logic and data architecture to drive real impact.",
+
+    "I thrive in solving complex problems at scale, where architecture directly influences performance and user experience. I also mentor engineers, establish best practices, and build design systems that improve team productivity.",
+
+    "I’m passionate about performance, system design, and developer experience—and always exploring better ways to build, scale, and optimize modern web applications.",
+  ];
   return (
     <SectionWrapper id="about" className="bg-gray-50 dark:bg-gray-900">
       <div className="mx-auto max-w-4xl">
@@ -33,17 +42,9 @@ export function About() {
           viewport={{ once: true }}
           className="space-y-6 text-lg text-gray-600 dark:text-gray-300"
         >
-          <p>
-            I'm a passionate full-stack web developer with a love for building elegant solutions to complex problems. My journey in tech started with curiosity about how things work on the web, and it has evolved into a career dedicated to creating exceptional digital experiences.
-          </p>
-
-          <p>
-            Over the past few years, I've worked on diverse projects ranging from e-commerce platforms to SaaS applications. I specialize in React and modern JavaScript/TypeScript, and I'm constantly exploring new technologies to stay at the forefront of web development.
-          </p>
-
-          <p>
-            Beyond coding, I'm passionate about teaching others, contributing to open-source projects, and sharing knowledge with the community. When I'm not coding, you can find me exploring new technologies, reading tech blogs, or enjoying outdoor activities.
-          </p>
+          {whatIBring.map((item) => (
+            <p>{item}</p>
+          ))}
         </motion.div>
 
         <motion.div
@@ -54,9 +55,21 @@ export function About() {
           className="mt-12 grid gap-6 md:grid-cols-3"
         >
           {[
-            { icon: '🎯', title: 'Goal-Oriented', desc: 'Focused on delivering results' },
-            { icon: '🚀', title: 'Innovation-Driven', desc: 'Always exploring new solutions' },
-            { icon: '🤝', title: 'Collaborative', desc: 'Love working with great teams' },
+            {
+              icon: "🎯",
+              title: "Goal-Oriented",
+              desc: "Focused on delivering results",
+            },
+            {
+              icon: "🚀",
+              title: "Innovation-Driven",
+              desc: "Always exploring new solutions",
+            },
+            {
+              icon: "🤝",
+              title: "Collaborative",
+              desc: "Love working with great teams",
+            },
           ].map((item, idx) => (
             <div
               key={idx}
@@ -74,5 +87,5 @@ export function About() {
         </motion.div>
       </div>
     </SectionWrapper>
-  )
+  );
 }

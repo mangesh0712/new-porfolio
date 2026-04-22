@@ -6,11 +6,11 @@ import { personal } from '@/data/personal';
 import { motion } from 'framer-motion';
 
 const whatIBring = [
-  'Building scalable web applications',
-  'Writing clean, maintainable code',
-  'Optimizing performance and user experience',
-  'Implementing responsive designs',
-  'Collaborating with cross-functional teams',
+  "I build scalable, high-performance React applications with clean, maintainable architecture.",
+"I specialize in modern UI systems, performance optimization, and seamless API integrations.",
+"I design efficient, reusable solutions aligned with real business impact.",
+"I bring leadership through mentoring, code quality, and best practices.",
+"I turn product ideas into robust, user-focused digital experiences.",
 ]
 
 export function Info() {
@@ -27,16 +27,6 @@ export function Info() {
           <Badge variant="accent">Building Digital Solutions</Badge>
         </motion.div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="mb-12 text-4xl font-bold text-gray-900 dark:text-white"
-        >
-          What I Bring
-        </motion.h2>
-
         <div className="space-y-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -45,7 +35,7 @@ export function Info() {
             viewport={{ once: true }}
           >
             <h3 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
-              My Journey
+              What I Bring
             </h3>
             <div className="space-y-3">
               {whatIBring.map((item, index) => (
