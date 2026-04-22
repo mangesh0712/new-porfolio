@@ -1,7 +1,7 @@
-import { SectionWrapper } from '@/components/layout/SectionWrapper'
-import { Badge } from '@/components/ui/Badge'
-import { experienceData } from '@/data/experience'
-import { motion } from 'framer-motion'
+import { SectionWrapper } from '@/components/layout/SectionWrapper';
+import { Badge } from '@/components/ui/Badge';
+import { experienceData } from '@/data/experience';
+import { motion } from 'framer-motion';
 
 export function Experience() {
   return (
@@ -53,7 +53,9 @@ export function Experience() {
                       </p>
                     </div>
                     {exp.isCurrent && (
-                      <span className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-gray-900 text-white dark:bg-white dark:text-gray-900">Current</span>
+                      <span className="inline-block rounded-full bg-gray-900 px-3 py-1 text-sm font-medium text-white dark:bg-white dark:text-gray-900">
+                        Current
+                      </span>
                     )}
                   </div>
 

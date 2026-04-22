@@ -1,9 +1,9 @@
-import { SectionWrapper } from '@/components/layout/SectionWrapper'
-import { Badge } from '@/components/ui/Badge'
-import { Card } from '@/components/ui/Card'
-import { testimonialsData } from '@/data/testimonials'
-import { motion } from 'framer-motion'
-import { FiStar } from 'react-icons/fi'
+import { SectionWrapper } from '@/components/layout/SectionWrapper';
+import { Badge } from '@/components/ui/Badge';
+import { Card } from '@/components/ui/Card';
+import { testimonialsData } from '@/data/testimonials';
+import { motion } from 'framer-motion';
+import { FiStar } from 'react-icons/fi';
 
 export function Testimonials() {
   return (

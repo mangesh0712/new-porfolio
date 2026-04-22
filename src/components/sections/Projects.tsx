@@ -1,11 +1,12 @@
-import { useState } from 'react'
-import { SectionWrapper } from '@/components/layout/SectionWrapper'
-import { Badge } from '@/components/ui/Badge'
-import { Button } from '@/components/ui/Button'
-import { Card } from '@/components/ui/Card'
-import { projectsData } from '@/data/projects'
-import { motion } from 'framer-motion'
-import { FiGithub, FiExternalLink } from 'react-icons/fi'
+import { cn } from '@/lib/utils';
+import { useState } from 'react';
+import { SectionWrapper } from '@/components/layout/SectionWrapper';
+import { Badge } from '@/components/ui/Badge';
+import { Button } from '@/components/ui/Button';
+import { Card } from '@/components/ui/Card';
+import { projectsData } from '@/data/projects';
+import { motion } from 'framer-motion';
+import { FiGithub, FiExternalLink } from 'react-icons/fi';
 
 type FilterType = 'all' | 'web' | 'mobile' | 'design' | 'fullstack'
 
@@ -96,7 +97,10 @@ export function Projects() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-200 font-medium"
+                        className={cn(
+                          'flex items-center gap-2 font-medium transition-colors',
+                          'text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-200'
+                        )}
                       >
                         <FiGithub size={18} />
                         Code
@@ -107,7 +111,10 @@ export function Projects() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-200 font-medium"
+                        className={cn(
+                          'flex items-center gap-2 font-medium transition-colors',
+                          'text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-200'
+                        )}
                       >
                         <FiExternalLink size={18} />
                         Live

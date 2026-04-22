@@ -1,6 +1,7 @@
-import { useState } from 'react'
-import { useAppStore } from '@/store/useAppStore'
-import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi'
+import { cn } from '@/lib/utils';
+import { useState } from 'react';
+import { useAppStore } from '@/store/useAppStore';
+import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi';
 
 const navItems = [
   { id: 'hero', label: 'Home' },
@@ -49,7 +50,10 @@ export function MobileNavbar() {
               <li key={item.id}>
                 <button
                   onClick={() => handleNavClick(item.id)}
-                  className="block w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                  className={cn(
+                    'block w-full rounded-lg px-4 py-2 text-left text-sm font-medium transition-colors',
+                    'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
+                  )}
                 >
                   {item.label}
                 </button>

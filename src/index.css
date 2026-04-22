@@ -34,3 +34,36 @@ body {
     @apply bg-gray-500 dark:bg-gray-500;
   }
 }
+
+/* Component patterns */
+.card {
+  @apply rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-950;
+}
+
+.section-container {
+  @apply min-h-screen w-full px-6 py-20;
+}
+
+.btn-primary {
+  @apply rounded-lg px-6 py-3 bg-emerald-700 text-white font-semibold transition-all duration-200 hover:bg-emerald-800 dark:bg-amber-400 dark:text-emerald-900 dark:hover:bg-amber-300;
+}
+
+.btn-secondary {
+  @apply rounded-lg px-6 py-3 bg-gray-200 text-gray-900 font-semibold transition-all duration-200 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600;
+}
+
+.btn-outline {
+  @apply rounded-lg px-6 py-3 border-2 border-emerald-700 text-emerald-700 font-semibold transition-all duration-200 hover:bg-emerald-700 hover:text-white dark:border-amber-400 dark:text-amber-400 dark:hover:bg-amber-400 dark:hover:text-emerald-900;
+}
+
+.badge-default {
+  @apply inline-block px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-gray-100;
+}
+
+.badge-outline {
+  @apply inline-block px-3 py-1 rounded-full text-sm font-medium border border-gray-300 text-gray-700 dark:border-gray-600 dark:text-gray-300;
+}
+
+.badge-accent {
+  @apply inline-block px-3 py-1 rounded-full text-sm font-medium bg-emerald-100 text-emerald-900 dark:bg-emerald-900/30 dark:text-amber-300;
+}

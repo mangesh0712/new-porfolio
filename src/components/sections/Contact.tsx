@@ -1,10 +1,11 @@
-import { SectionWrapper } from '@/components/layout/SectionWrapper'
-import { Badge } from '@/components/ui/Badge'
-import { ContactForm } from './ContactForm'
-import { personal } from '@/data/personal'
-import { motion } from 'framer-motion'
-import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
-import { FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi'
+import { cn } from '@/lib/utils';
+import { SectionWrapper } from '@/components/layout/SectionWrapper';
+import { Badge } from '@/components/ui/Badge';
+import { ContactForm } from './ContactForm';
+import { personal } from '@/data/personal';
+import { motion } from 'framer-motion';
+import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
 
 export function Contact() {
   return (
@@ -56,7 +57,12 @@ export function Contact() {
                 href={`mailto:${personal.email}`}
                 className="group flex items-start gap-4 rounded-lg p-4 transition-colors hover:bg-white dark:hover:bg-gray-800"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700 group-hover:bg-emerald-200 dark:bg-emerald-900/30 dark:text-amber-400">
+                <div
+                  className={cn(
+                    'flex h-12 w-12 items-center justify-center rounded-lg',
+                    'bg-emerald-100 text-emerald-700 group-hover:bg-emerald-200 dark:bg-emerald-900/30 dark:text-amber-400'
+                  )}
+                >
                   <FiMail size={20} />
                 </div>
                 <div>
@@ -73,7 +79,12 @@ export function Contact() {
                 href={`tel:${personal.phone}`}
                 className="group flex items-start gap-4 rounded-lg p-4 transition-colors hover:bg-white dark:hover:bg-gray-800"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700 group-hover:bg-emerald-200 dark:bg-emerald-900/30 dark:text-amber-400">
+                <div
+                  className={cn(
+                    'flex h-12 w-12 items-center justify-center rounded-lg',
+                    'bg-emerald-100 text-emerald-700 group-hover:bg-emerald-200 dark:bg-emerald-900/30 dark:text-amber-400'
+                  )}
+                >
                   <FiPhone size={20} />
                 </div>
                 <div>
@@ -87,7 +98,12 @@ export function Contact() {
               </a>
 
               <div className="flex items-start gap-4 rounded-lg p-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+                <div
+                  className={cn(
+                    'flex h-12 w-12 items-center justify-center rounded-lg',
+                    'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400'
+                  )}
+                >
                   <FiMapPin size={20} />
                 </div>
                 <div>
@@ -110,7 +126,10 @@ export function Contact() {
                   href={personal.socials.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-lg bg-emerald-700 text-white p-3 transition-colors hover:bg-emerald-800 dark:bg-amber-400 dark:text-emerald-900 dark:hover:bg-amber-300"
+                  className={cn(
+                    'rounded-lg p-3 transition-colors',
+                    'bg-emerald-700 text-white hover:bg-emerald-800 dark:bg-amber-400 dark:text-emerald-900 dark:hover:bg-amber-300'
+                  )}
                 >
                   <FiGithub size={20} />
                 </a>
@@ -118,7 +137,10 @@ export function Contact() {
                   href={personal.socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-lg bg-emerald-700 text-white p-3 transition-colors hover:bg-emerald-800 dark:bg-amber-400 dark:text-emerald-900 dark:hover:bg-amber-300"
+                  className={cn(
+                    'rounded-lg p-3 transition-colors',
+                    'bg-emerald-700 text-white hover:bg-emerald-800 dark:bg-amber-400 dark:text-emerald-900 dark:hover:bg-amber-300'
+                  )}
                 >
                   <FiLinkedin size={20} />
                 </a>
@@ -126,7 +148,10 @@ export function Contact() {
                   href={personal.socials.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-lg bg-emerald-700 text-white p-3 transition-colors hover:bg-emerald-800 dark:bg-amber-400 dark:text-emerald-900 dark:hover:bg-amber-300"
+                  className={cn(
+                    'rounded-lg p-3 transition-colors',
+                    'bg-emerald-700 text-white hover:bg-emerald-800 dark:bg-amber-400 dark:text-emerald-900 dark:hover:bg-amber-300'
+                  )}
                 >
                   <FiTwitter size={20} />
                 </a>

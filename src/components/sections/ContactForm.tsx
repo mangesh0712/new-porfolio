@@ -1,10 +1,11 @@
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
-import { Button } from '@/components/ui/Button'
-import { sendEmail } from '@/lib/emailService'
-import { motion } from 'framer-motion'
+import { cn } from '@/lib/utils';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Button } from '@/components/ui/Button';
+import { sendEmail } from '@/lib/emailService';
+import { motion } from 'framer-motion';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -50,6 +51,13 @@ export function ContactForm() {
     }
   }
 
+  const inputClasses = cn(
+    'mt-2 w-full rounded-lg border border-gray-300 bg-white px-4 py-3',
+    'text-gray-900 placeholder-gray-500 transition-colors',
+    'focus:border-gray-900 focus:outline-none',
+    'dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:focus:border-white'
+  );
+
   return (
     <motion.form
       initial={{ opacity: 0, y: 20 }}
@@ -67,7 +75,7 @@ export function ContactForm() {
           {...register('name')}
           type="text"
           placeholder="Your name"
-          className="mt-2 w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:focus:border-white"
+          className={inputClasses}
         />
         {errors.name && (
           <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>
@@ -82,7 +90,7 @@ export function ContactForm() {
           {...register('email')}
           type="email"
           placeholder="your@email.com"
-          className="mt-2 w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:focus:border-white"
+          className={inputClasses}
         />
         {errors.email && (
           <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
@@ -97,7 +105,7 @@ export function ContactForm() {
           {...register('subject')}
           type="text"
           placeholder="What's this about?"
-          className="mt-2 w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:focus:border-white"
+          className={inputClasses}
         />
         {errors.subject && (
           <p className="mt-1 text-sm text-red-500">{errors.subject.message}</p>
@@ -112,7 +120,7 @@ export function ContactForm() {
           {...register('message')}
           placeholder="Your message..."
           rows={5}
-          className="mt-2 w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:focus:border-white"
+          className={inputClasses}
         />
         {errors.message && (
           <p className="mt-1 text-sm text-red-500">{errors.message.message}</p>

@@ -31,7 +31,7 @@ export function SkillCard({ name, level }: SkillCardProps) {
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.4 }}
       viewport={{ once: true }}
-      className="flex flex-col items-center gap-2 p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow"
+      className="flex flex-col items-center gap-2 rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800 transition-shadow hover:shadow-lg"
     >
       <div className="flex h-12 w-12 items-center justify-center">
         {displayIcon || (
@@ -40,10 +40,10 @@ export function SkillCard({ name, level }: SkillCardProps) {
           </div>
         )}
       </div>
-      <p className="text-sm font-semibold text-gray-900 dark:text-white text-center">
+      <p className="text-center text-sm font-semibold text-gray-900 dark:text-white">
         {name}
       </p>
-      <div className="w-full h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+      <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
         <motion.div
           className="h-full bg-gradient-to-r from-emerald-600 to-emerald-700 dark:from-amber-400 dark:to-amber-300"
           initial={{ width: 0 }}
@@ -54,5 +54,5 @@ export function SkillCard({ name, level }: SkillCardProps) {
       </div>
       <p className="text-xs text-gray-500 dark:text-gray-400">{level}%</p>
     </motion.div>
-  )
+  );
 }

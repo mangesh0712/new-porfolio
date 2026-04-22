@@ -26,7 +26,7 @@ Navigation hub for project standards and processes.
 
 ## ⚡ Core Rules
 
-**No compiled files in src/** - Only `.tsx`/`.ts` files. Output → `dist/`.
+**No compiled files in src/** - Only `.tsx`/`.ts` files. Output → `dist/`. Never commit `.js` files—they're minified output, not source.
 
 **MD files stay minimal** - Only specific information, no verbose explanations. Keep productive, not bulky.
 

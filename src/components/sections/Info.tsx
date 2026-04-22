@@ -1,9 +1,9 @@
-import { SectionWrapper } from '@/components/layout/SectionWrapper'
-import { Badge } from '@/components/ui/Badge'
-import { SkillCard } from '@/components/ui/SkillCard'
-import { skillsData } from '@/data/skills'
-import { personal } from '@/data/personal'
-import { motion } from 'framer-motion'
+import { SectionWrapper } from '@/components/layout/SectionWrapper';
+import { Badge } from '@/components/ui/Badge';
+import { SkillCard } from '@/components/ui/SkillCard';
+import { skillsData } from '@/data/skills';
+import { personal } from '@/data/personal';
+import { motion } from 'framer-motion';
 
 const whatIBring = [
   'Building scalable web applications',

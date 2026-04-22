@@ -1,10 +1,11 @@
-import { motion } from 'framer-motion'
-import { FiGithub, FiLinkedin, FiTwitter, FiDownload } from 'react-icons/fi'
-import { Button } from '@/components/ui/Button'
-import { Badge } from '@/components/ui/Badge'
-import { SectionWrapper } from '@/components/layout/SectionWrapper'
-import { personal } from '@/data/personal'
-import { useEffect, useState } from 'react'
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import { FiGithub, FiLinkedin, FiTwitter, FiDownload } from 'react-icons/fi';
+import { Button } from '@/components/ui/Button';
+import { Badge } from '@/components/ui/Badge';
+import { SectionWrapper } from '@/components/layout/SectionWrapper';
+import { personal } from '@/data/personal';
+import { useEffect, useState } from 'react';
 
 export function Hero() {
   const [titleNumber, setTitleNumber] = useState(0)
@@ -29,12 +30,15 @@ export function Hero() {
 
   return (
     <SectionWrapper id="hero" className="flex flex-col justify-center relative">
-      <div className="absolute top-6 right-6 flex gap-3">
+      <div className="absolute right-6 top-6 hidden flex-col gap-3 lg:flex">
         <a
           href={personal.socials.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full bg-emerald-700 text-white dark:bg-amber-400 dark:text-emerald-900 p-3 transition-transform hover:scale-110 lg:block hidden"
+          className={cn(
+            'rounded-full p-3 transition-transform hover:scale-110',
+            'bg-emerald-700 text-white dark:bg-amber-400 dark:text-emerald-900'
+          )}
         >
           <FiGithub size={20} />
         </a>
@@ -42,7 +46,10 @@ export function Hero() {
           href={personal.socials.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full bg-emerald-700 text-white dark:bg-amber-400 dark:text-emerald-900 p-3 transition-transform hover:scale-110 lg:block hidden"
+          className={cn(
+            'rounded-full p-3 transition-transform hover:scale-110',
+            'bg-emerald-700 text-white dark:bg-amber-400 dark:text-emerald-900'
+          )}
         >
           <FiLinkedin size={20} />
         </a>
@@ -50,7 +57,10 @@ export function Hero() {
           href={personal.socials.twitter}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full bg-emerald-700 text-white dark:bg-amber-400 dark:text-emerald-900 p-3 transition-transform hover:scale-110 lg:block hidden"
+          className={cn(
+            'rounded-full p-3 transition-transform hover:scale-110',
+            'bg-emerald-700 text-white dark:bg-amber-400 dark:text-emerald-900'
+          )}
         >
           <FiTwitter size={20} />
         </a>

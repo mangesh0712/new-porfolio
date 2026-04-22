@@ -24,5 +24,5 @@ export function SkillBar({ name, level }: SkillBarProps) {
         />
       </div>
     </div>
-  )
+  );
 }

@@ -1,10 +1,10 @@
-import { cn } from '@/lib/utils'
-import { ReactNode } from 'react'
+import { cn } from '@/lib/utils';
+import { ReactNode } from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline'
-  size?: 'sm' | 'md' | 'lg'
-  children: ReactNode
+  variant?: 'primary' | 'secondary' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  children: ReactNode;
 }
 
 export function Button({
@@ -16,7 +16,7 @@ export function Button({
   return (
     <button
       className={cn(
-        'rounded-lg transition-all duration-200 font-semibold',
+        'rounded-lg font-semibold transition-all duration-200',
         {
           'px-3 py-2 text-sm': size === 'sm',
           'px-6 py-3 text-base': size === 'md',
@@ -34,5 +34,5 @@ export function Button({
       )}
       {...props}
     />
-  )
+  );
 }
