@@ -1,61 +1,68 @@
-import { cn } from '@/lib/utils';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { Button } from '@/components/ui/Button';
-import { sendEmail } from '@/lib/emailService';
-import { motion } from 'framer-motion';
+import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Button } from "@/components/ui/Button";
+import { sendEmail } from "@/lib/emailService";
+import { motion } from "framer-motion";
 
 const contactSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Invalid email address'),
-  subject: z.string().min(3, 'Subject must be at least 3 characters'),
-  message: z.string().min(20, 'Message must be at least 20 characters'),
-})
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Invalid email address"),
+  subject: z.string().optional(),
+  message: z.string().min(20, "Message must be at least 20 characters"),
+});
 
-type ContactFormInputs = z.infer<typeof contactSchema>
+type ContactFormInputs = z.infer<typeof contactSchema>;
 
 export function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>(
-    'idle'
-  )
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
     reset,
   } = useForm<ContactFormInputs>({
     resolver: zodResolver(contactSchema),
-  })
+    mode: "onBlur",
+    defaultValues: {
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    },
+  });
 
   const onSubmit = async (data: ContactFormInputs) => {
-    setIsSubmitting(true)
-    setSubmitStatus('idle')
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
 
     try {
-      const success = await sendEmail(data)
+      const success = await sendEmail(data);
       if (success) {
-        setSubmitStatus('success')
-        reset()
-        setTimeout(() => setSubmitStatus('idle'), 3000)
+        setSubmitStatus("success");
+        reset();
+        setTimeout(() => setSubmitStatus("idle"), 3000);
       } else {
-        setSubmitStatus('error')
+        setSubmitStatus("error");
       }
     } catch {
-      setSubmitStatus('error')
+      setSubmitStatus("error");
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   const inputClasses = cn(
-    'mt-2 w-full rounded-lg border border-gray-300 bg-white px-4 py-3',
-    'text-gray-900 placeholder-gray-500 transition-colors',
-    'focus:border-gray-900 focus:outline-none',
-    'dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:focus:border-white'
+    "mt-2 w-full rounded-lg border border-gray-300 bg-white px-4 py-3",
+    "text-gray-900 placeholder-gray-500 transition-colors",
+    "focus:border-gray-900 focus:outline-none",
+    "dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:focus:border-white",
   );
 
   return (
@@ -69,12 +76,12 @@ export function ContactForm() {
     >
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-          Name
+          Name <span className="text-red-500">*</span>
         </label>
         <input
-          {...register('name')}
+          {...register("name")}
           type="text"
-          placeholder="Your name"
+          placeholder="Your name (min. 2 characters)"
           className={inputClasses}
         />
         {errors.name && (
@@ -84,12 +91,12 @@ export function ContactForm() {
 
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-          Email
+          Email <span className="text-red-500">*</span>
         </label>
         <input
-          {...register('email')}
+          {...register("email")}
           type="email"
-          placeholder="your@email.com"
+          placeholder="your@email.com (valid email required)"
           className={inputClasses}
         />
         {errors.email && (
@@ -102,9 +109,9 @@ export function ContactForm() {
           Subject
         </label>
         <input
-          {...register('subject')}
+          {...register("subject")}
           type="text"
-          placeholder="What's this about?"
+          placeholder="What's this about? (min. 3 characters)"
           className={inputClasses}
         />
         {errors.subject && (
@@ -114,11 +121,11 @@ export function ContactForm() {
 
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-          Message
+          Message <span className="text-red-500">*</span>
         </label>
         <textarea
-          {...register('message')}
-          placeholder="Your message..."
+          {...register("message")}
+          placeholder="Your message... (min. 20 characters required)"
           rows={5}
           className={inputClasses}
         />
@@ -127,13 +134,13 @@ export function ContactForm() {
         )}
       </div>
 
-      {submitStatus === 'success' && (
+      {submitStatus === "success" && (
         <div className="rounded-lg bg-green-500/10 p-4 text-green-600 dark:text-green-400">
           ✓ Message sent successfully! I'll get back to you soon.
         </div>
       )}
 
-      {submitStatus === 'error' && (
+      {submitStatus === "error" && (
         <div className="rounded-lg bg-red-500/10 p-4 text-red-600 dark:text-red-400">
           ✗ Failed to send message. Please try again.
         </div>
@@ -143,11 +150,11 @@ export function ContactForm() {
         type="submit"
         variant="primary"
         size="lg"
-        disabled={isSubmitting}
+        disabled={isSubmitting || !isValid}
         className="w-full"
       >
-        {isSubmitting ? 'Sending...' : 'Send Message'}
+        {isSubmitting ? "Sending..." : "Send Message"}
       </Button>
     </motion.form>
-  )
+  );
 }
