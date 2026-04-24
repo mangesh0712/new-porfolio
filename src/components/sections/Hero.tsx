@@ -5,16 +5,12 @@ import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { personal } from '@/data/personal';
+import { HERO } from '@/constants';
 import { useEffect, useState } from 'react';
 
 export function Hero() {
   const [titleNumber, setTitleNumber] = useState(0)
-  const titles = [
-    'Full Stack Developer',
-    'UI/UX hero',
-    'Problem Solver',
-    'Tech Innovator',
-  ]
+  const titles = HERO.TITLES
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -75,7 +71,7 @@ export function Hero() {
           {personal.availability && (
             <Badge variant="accent">
               <span className="inline-block h-2 w-2 rounded-full bg-cyan-500 mr-2" />
-              Available for opportunities
+              {HERO.AVAILABLE_BADGE}
             </Badge>
           )}
         </motion.div>
@@ -86,7 +82,7 @@ export function Hero() {
           transition={{ delay: 0.2 }}
           className="mb-4 text-5xl font-bold text-gray-900 dark:text-white md:text-7xl"
         >
-          Hi, I'm <span className="text-cyan-500">{personal.name}</span>
+          {HERO.GREETING} <span className="text-cyan-500">{personal.name}</span>
         </motion.h1>
 
         <motion.div
@@ -120,11 +116,11 @@ export function Hero() {
             variant="primary"
             onClick={() => handleScroll('experience')}
           >
-            View My Work
+            {HERO.CTA_PRIMARY}
           </Button>
           <Button size="md" variant="outline">
             <FiDownload className="mr-2 inline" />
-            Download Resume
+            {HERO.CTA_SECONDARY}
           </Button>
         </motion.div>
 

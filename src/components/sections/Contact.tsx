@@ -3,6 +3,7 @@ import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { Badge } from '@/components/ui/Badge';
 import { ContactForm } from './ContactForm';
 import { personal } from '@/data/personal';
+import { CONTACT } from '@/constants';
 import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 import { FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
@@ -18,7 +19,7 @@ export function Contact() {
           viewport={{ once: true }}
           className="mb-6 text-center"
         >
-          <Badge variant="accent">Get In Touch</Badge>
+          <Badge variant="accent">{CONTACT.BADGE}</Badge>
         </motion.div>
 
         <motion.h2
@@ -28,7 +29,7 @@ export function Contact() {
           viewport={{ once: true }}
           className="mb-4 text-center text-4xl font-bold text-gray-900 dark:text-white"
         >
-          Let's Connect
+          {CONTACT.HEADING}
         </motion.h2>
 
         <motion.p
@@ -38,7 +39,7 @@ export function Contact() {
           viewport={{ once: true }}
           className="mb-12 text-center text-lg text-gray-600 dark:text-gray-300"
         >
-          Have a question or want to work together? Feel free to reach out!
+          {CONTACT.DESCRIPTION}
         </motion.p>
 
         <div className="grid gap-12 lg:grid-cols-2">
@@ -49,7 +50,7 @@ export function Contact() {
             viewport={{ once: true }}
           >
             <h3 className="mb-8 text-2xl font-bold text-gray-900 dark:text-white">
-              Contact Information
+              {CONTACT.INFO_HEADING}
             </h3>
 
             <div className="space-y-8">
@@ -67,7 +68,7 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white">
-                    Email
+                    {CONTACT.EMAIL_LABEL}
                   </h4>
                   <p className="text-gray-600 dark:text-gray-400">
                     {personal.email}
@@ -89,7 +90,7 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white">
-                    Phone
+                    {CONTACT.PHONE_LABEL}
                   </h4>
                   <p className="text-gray-600 dark:text-gray-400">
                     {personal.phone}
@@ -108,7 +109,7 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white">
-                    Location
+                    {CONTACT.LOCATION_LABEL}
                   </h4>
                   <p className="text-gray-600 dark:text-gray-400">
                     {personal.location}
@@ -119,7 +120,7 @@ export function Contact() {
 
             <div className="mt-12 text-center">
               <h4 className="mb-4 font-semibold text-gray-900 dark:text-white">
-                Follow Me
+                {CONTACT.SOCIAL_HEADING}
               </h4>
               <div className="flex justify-center gap-4">
                 <a

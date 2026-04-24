@@ -5,13 +5,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/Button";
 import { sendEmail } from "@/lib/emailService";
+import { CONTACT_FORM, VALIDATION } from "@/constants";
 import { motion } from "framer-motion";
 
 const contactSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Invalid email address"),
+  name: z.string().min(VALIDATION.NAME_MIN_LENGTH, CONTACT_FORM.VALIDATION.NAME_MIN),
+  email: z.string().email(CONTACT_FORM.VALIDATION.EMAIL_INVALID),
   subject: z.string().optional(),
-  message: z.string().min(20, "Message must be at least 20 characters"),
+  message: z.string().min(VALIDATION.MESSAGE_MIN_LENGTH, CONTACT_FORM.VALIDATION.MESSAGE_MIN),
 });
 
 type ContactFormInputs = z.infer<typeof contactSchema>;
@@ -47,7 +48,7 @@ export function ContactForm() {
       if (success) {
         setSubmitStatus("success");
         reset();
-        setTimeout(() => setSubmitStatus("idle"), 3000);
+        setTimeout(() => setSubmitStatus("idle"), VALIDATION.SUBMIT_STATUS_TIMEOUT);
       } else {
         setSubmitStatus("error");
       }
@@ -76,12 +77,12 @@ export function ContactForm() {
     >
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-          Name <span className="text-red-500">*</span>
+          {CONTACT_FORM.LABELS.NAME} <span className="text-red-500">*</span>
         </label>
         <input
           {...register("name")}
           type="text"
-          placeholder="Your name (min. 2 characters)"
+          placeholder={CONTACT_FORM.PLACEHOLDERS.NAME}
           className={inputClasses}
         />
         {errors.name && (
@@ -91,12 +92,12 @@ export function ContactForm() {
 
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-          Email <span className="text-red-500">*</span>
+          {CONTACT_FORM.LABELS.EMAIL} <span className="text-red-500">*</span>
         </label>
         <input
           {...register("email")}
           type="email"
-          placeholder="your@email.com (valid email required)"
+          placeholder={CONTACT_FORM.PLACEHOLDERS.EMAIL}
           className={inputClasses}
         />
         {errors.email && (
@@ -106,12 +107,12 @@ export function ContactForm() {
 
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-          Subject
+          {CONTACT_FORM.LABELS.SUBJECT}
         </label>
         <input
           {...register("subject")}
           type="text"
-          placeholder="What's this about? (min. 3 characters)"
+          placeholder={CONTACT_FORM.PLACEHOLDERS.SUBJECT}
           className={inputClasses}
         />
         {errors.subject && (
@@ -121,11 +122,11 @@ export function ContactForm() {
 
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-          Message <span className="text-red-500">*</span>
+          {CONTACT_FORM.LABELS.MESSAGE} <span className="text-red-500">*</span>
         </label>
         <textarea
           {...register("message")}
-          placeholder="Your message... (min. 20 characters required)"
+          placeholder={CONTACT_FORM.PLACEHOLDERS.MESSAGE}
           rows={5}
           className={inputClasses}
         />
@@ -136,13 +137,13 @@ export function ContactForm() {
 
       {submitStatus === "success" && (
         <div className="rounded-lg bg-green-500/10 p-4 text-green-600 dark:text-green-400">
-          ✓ Message sent successfully! I'll get back to you soon.
+          {CONTACT_FORM.STATUS.SUCCESS}
         </div>
       )}
 
       {submitStatus === "error" && (
         <div className="rounded-lg bg-red-500/10 p-4 text-red-600 dark:text-red-400">
-          ✗ Failed to send message. Please try again.
+          {CONTACT_FORM.STATUS.ERROR}
         </div>
       )}
 
@@ -153,7 +154,7 @@ export function ContactForm() {
         disabled={isSubmitting || !isValid}
         className="w-full"
       >
-        {isSubmitting ? "Sending..." : "Send Message"}
+        {isSubmitting ? CONTACT_FORM.BUTTON.LOADING : CONTACT_FORM.BUTTON.IDLE}
       </Button>
     </motion.form>
   );
