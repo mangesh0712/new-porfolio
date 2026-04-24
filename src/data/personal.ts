@@ -10,7 +10,7 @@ export const personal = {
   socials: {
     github: "https://github.com",
     linkedin: "https://www.linkedin.com/in/mangesh0712",
-    twitter: "https://twitter.com",
+    instagram: "https://www.instagram.com/mangesh.707/",
   },
   stats: {
     yearsOfExperience: 7,

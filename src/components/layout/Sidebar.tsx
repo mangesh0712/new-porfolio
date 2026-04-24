@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import { useAppStore } from '@/store/useAppStore';
-import { FiGithub, FiLinkedin, FiTwitter, FiSun, FiMoon } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiInstagram, FiSun, FiMoon } from 'react-icons/fi';
 import { personal } from '@/data/personal';
 
 const navItems = [
@@ -82,12 +82,12 @@ export function Sidebar() {
             <FiLinkedin className="inline-block text-lg" />
           </a>
           <a
-            href={personal.socials.twitter}
+            href={personal.socials.instagram}
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 rounded-lg bg-gray-100 p-2 text-center transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
           >
-            <FiTwitter className="inline-block text-lg" />
+            <FiInstagram className="inline-block text-lg" />
           </a>
         </div>
       </div>

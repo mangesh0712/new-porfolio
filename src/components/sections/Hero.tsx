@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiTwitter, FiDownload } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiInstagram, FiDownload } from 'react-icons/fi';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
@@ -50,7 +50,7 @@ export function Hero() {
           <FiLinkedin size={20} />
         </a>
         <a
-          href={personal.socials.twitter}
+          href={personal.socials.instagram}
           target="_blank"
           rel="noopener noreferrer"
           className={cn(
@@ -58,7 +58,7 @@ export function Hero() {
             'bg-emerald-700 text-white dark:bg-amber-400 dark:text-emerald-900'
           )}
         >
-          <FiTwitter size={20} />
+          <FiInstagram size={20} />
         </a>
       </div>
       <div className="mx-auto max-w-3xl">

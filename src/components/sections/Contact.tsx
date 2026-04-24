@@ -6,7 +6,7 @@ import { personal } from '@/data/personal';
 import { CONTACT } from '@/constants';
 import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
-import { FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiInstagram } from 'react-icons/fi';
 
 export function Contact() {
   return (
@@ -146,7 +146,7 @@ export function Contact() {
                   <FiLinkedin size={20} />
                 </a>
                 <a
-                  href={personal.socials.twitter}
+                  href={personal.socials.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(
@@ -154,7 +154,7 @@ export function Contact() {
                     'bg-emerald-700 text-white hover:bg-emerald-800 dark:bg-amber-400 dark:text-emerald-900 dark:hover:bg-amber-300'
                   )}
                 >
-                  <FiTwitter size={20} />
+                  <FiInstagram size={20} />
                 </a>
               </div>
             </div>
