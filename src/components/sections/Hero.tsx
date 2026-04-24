@@ -118,10 +118,12 @@ export function Hero() {
           >
             {HERO.CTA_PRIMARY}
           </Button>
-          <Button size="md" variant="outline">
-            <FiDownload className="mr-2 inline" />
-            {HERO.CTA_SECONDARY}
-          </Button>
+          <a href="/resume.pdf" download="Mangesh_Khandale_Resume.pdf">
+            <Button size="md" variant="outline">
+              <FiDownload className="mr-2 inline" />
+              {HERO.CTA_SECONDARY}
+            </Button>
+          </a>
         </motion.div>
 
       </div>
