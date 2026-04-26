@@ -59,3 +59,25 @@ export const VALIDATION = {
   MESSAGE_MIN_LENGTH: 20,
   SUBMIT_STATUS_TIMEOUT: 3000,
 };
+
+// Social Brand Colors
+export const SOCIAL_COLORS = {
+  github: {
+    bg: 'bg-gray-900',
+    text: 'text-white',
+    hover: 'hover:bg-gray-800',
+    darkHover: 'dark:hover:bg-gray-700',
+  },
+  linkedin: {
+    bg: 'bg-blue-600',
+    text: 'text-white',
+    hover: 'hover:bg-blue-700',
+    darkHover: 'dark:hover:bg-blue-700',
+  },
+  instagram: {
+    bg: 'bg-pink-600',
+    text: 'text-white',
+    hover: 'hover:bg-pink-700',
+    darkHover: 'dark:hover:bg-pink-700',
+  },
+};

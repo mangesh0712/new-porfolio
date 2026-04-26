@@ -17,7 +17,7 @@ export function Hero() {
       setTitleNumber((prev) => (prev + 1) % titles.length)
     }, 3000)
     return () => clearInterval(interval)
-  }, [])
+  }, [titles])
 
   const handleScroll = (target: string) => {
     const element = document.getElementById(target)
@@ -31,9 +31,11 @@ export function Hero() {
           href={personal.socials.github}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Visit my GitHub profile"
           className={cn(
-            'rounded-full p-3 transition-transform hover:scale-110',
-            'bg-emerald-700 text-white dark:bg-amber-400 dark:text-emerald-900'
+            'rounded-full p-3 transition-all hover:scale-110',
+            'bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
+            'hover:bg-gray-900 hover:text-white dark:hover:bg-gray-900 dark:hover:text-white'
           )}
         >
           <FiGithub size={20} />
@@ -42,9 +44,11 @@ export function Hero() {
           href={personal.socials.linkedin}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Visit my LinkedIn profile"
           className={cn(
-            'rounded-full p-3 transition-transform hover:scale-110',
-            'bg-emerald-700 text-white dark:bg-amber-400 dark:text-emerald-900'
+            'rounded-full p-3 transition-all hover:scale-110',
+            'bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
+            'hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white'
           )}
         >
           <FiLinkedin size={20} />
@@ -53,9 +57,11 @@ export function Hero() {
           href={personal.socials.instagram}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Visit my Instagram profile"
           className={cn(
-            'rounded-full p-3 transition-transform hover:scale-110',
-            'bg-emerald-700 text-white dark:bg-amber-400 dark:text-emerald-900'
+            'rounded-full p-3 transition-all hover:scale-110',
+            'bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
+            'hover:bg-pink-600 hover:text-white dark:hover:bg-pink-600 dark:hover:text-white'
           )}
         >
           <FiInstagram size={20} />
@@ -70,7 +76,7 @@ export function Hero() {
         >
           {personal.availability && (
             <Badge variant="accent">
-              <span className="inline-block h-2 w-2 rounded-full bg-cyan-500 mr-2" />
+              <span className="inline-block h-2 w-2 rounded-full bg-cyan-500 mr-2" aria-hidden="false" />
               {HERO.AVAILABLE_BADGE}
             </Badge>
           )}
