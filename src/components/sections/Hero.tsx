@@ -124,7 +124,7 @@ export function Hero() {
           >
             {HERO.CTA_PRIMARY}
           </Button>
-          <a href="/resume.pdf" download="Mangesh_Khandale_Resume.pdf">
+          <a href="/Mangesh_Resume_Latest.pdf" download="Mangesh_Khandale_Resume.pdf">
             <Button size="md" variant="outline">
               <FiDownload className="mr-2 inline" />
               {HERO.CTA_SECONDARY}
