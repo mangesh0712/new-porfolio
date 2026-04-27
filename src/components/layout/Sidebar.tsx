@@ -2,7 +2,6 @@ import { cn } from '@/lib/utils';
 import { useAppStore } from '@/store/useAppStore';
 import { FiGithub, FiLinkedin, FiInstagram, FiSun, FiMoon } from 'react-icons/fi';
 import { personal } from '@/data/personal';
-import { SOCIAL_COLORS } from '@/constants';
 
 const navItems = [
   { id: 'hero', label: 'Home' },
