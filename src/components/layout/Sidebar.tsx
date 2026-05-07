@@ -4,13 +4,13 @@ import { FiGithub, FiLinkedin, FiInstagram, FiSun, FiMoon } from 'react-icons/fi
 import { personal } from '@/data/personal';
 
 const navItems = [
-  { id: 'hero', label: 'Home' },
-  { id: 'info', label: 'Info' },
-  { id: 'about', label: 'About' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'testimonials', label: 'Testimonials' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'hero', label: 'Home', disabled: false },
+  { id: 'info', label: 'Info', disabled: false },
+  { id: 'about', label: 'About', disabled: false },
+  { id: 'projects', label: 'Projects', disabled: true },
+  { id: 'experience', label: 'Experience', disabled: false },
+  { id: 'testimonials', label: 'Testimonials', disabled: false },
+  { id: 'contact', label: 'Contact', disabled: false },
 ]
 
 export function Sidebar() {
@@ -37,13 +37,17 @@ export function Sidebar() {
           {navItems.map((item) => (
             <li key={item.id}>
               <button
-                onClick={() => handleNavClick(item.id)}
+                onClick={() => !item.disabled && handleNavClick(item.id)}
+                disabled={item.disabled}
                 aria-current={activeSection === item.id ? 'page' : undefined}
+                title={item.disabled ? 'Disabled as of now' : ''}
                 className={cn(
                   'block w-full rounded-lg px-4 py-2 text-left text-sm font-medium transition-colors',
-                  activeSection === item.id
-                    ? 'bg-emerald-700 text-white dark:bg-amber-400 dark:text-emerald-900'
-                    : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
+                  item.disabled
+                    ? 'cursor-not-allowed opacity-50 text-gray-400 dark:text-gray-600'
+                    : activeSection === item.id
+                      ? 'bg-emerald-700 text-white dark:bg-amber-400 dark:text-emerald-900'
+                      : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
                 )}
               >
                 {item.label}

@@ -1,6 +1,6 @@
 # Research Agent
 
-**Purpose**: Investigate and explore new technologies, patterns, and best practices.
+**Purpose**: Investigate and explore neaw technologies, patterns, and best practices.
 
 ## Responsibilities
 - Research new React patterns, libraries, and features
