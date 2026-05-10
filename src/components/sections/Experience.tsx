@@ -14,8 +14,6 @@ export function Experience() {
           viewport={{ once: true }}
           className="mb-6"
         >
-
-          
           <Badge variant="accent">Professional Journey</Badge>
         </motion.div>
 
