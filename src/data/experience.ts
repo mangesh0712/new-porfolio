@@ -30,7 +30,7 @@ export const experienceData: Experience[] = [
     description:
       'Developed application landscape repository (IAPPLI) for Societe Generale supporting management of applications across strategy, finance, production support, security, compliance, and infrastructure.',
     achievements: [
-      'Built scalable React widgets for integration across multiple applications',
+      'Built scalable React widgets for integration across multiple applications.',
       'Developed application management features supporting key business activities',
       'Collaborated with cross-functional teams on enterprise-scale applications',
     ],
