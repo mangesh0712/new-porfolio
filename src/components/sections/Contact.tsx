@@ -2,6 +2,8 @@ import { cn } from '@/lib/utils';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { Badge } from '@/components/ui/Badge';
 import { ContactForm } from './ContactForm';
+import { SocialButton } from '@/components/common/SocialButton';
+import { SectionHeading } from '@/components/common/SectionHeading';
 import { personal } from '@/data/personal';
 import { CONTACT } from '@/constants';
 import { motion } from 'framer-motion';
@@ -22,15 +24,7 @@ export function Contact() {
           <Badge variant="accent">{CONTACT.BADGE}</Badge>
         </motion.div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="mb-4 text-center text-4xl font-bold text-gray-900 dark:text-white"
-        >
-          {CONTACT.HEADING}
-        </motion.h2>
+        <SectionHeading>{CONTACT.HEADING}</SectionHeading>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -123,45 +117,27 @@ export function Contact() {
                 {CONTACT.SOCIAL_HEADING}
               </h4>
               <div className="flex justify-center gap-4">
-                <a
+                <SocialButton
                   href={personal.socials.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Visit my GitHub profile"
-                  className={cn(
-                    'rounded-lg p-3 transition-colors',
-                    'bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
-                    'hover:bg-gray-900 hover:text-white dark:hover:bg-gray-900 dark:hover:text-white'
-                  )}
-                >
-                  <FiGithub size={20} />
-                </a>
-                <a
+                  platform="github"
+                  icon={<FiGithub size={20} />}
+                  ariaLabel="Visit my GitHub profile"
+                  variant="rounded"
+                />
+                <SocialButton
                   href={personal.socials.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Visit my LinkedIn profile"
-                  className={cn(
-                    'rounded-lg p-3 transition-colors',
-                    'bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
-                    'hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white'
-                  )}
-                >
-                  <FiLinkedin size={20} />
-                </a>
-                <a
+                  platform="linkedin"
+                  icon={<FiLinkedin size={20} />}
+                  ariaLabel="Visit my LinkedIn profile"
+                  variant="rounded"
+                />
+                <SocialButton
                   href={personal.socials.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Visit my Instagram profile"
-                  className={cn(
-                    'rounded-lg p-3 transition-colors',
-                    'bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
-                    'hover:bg-pink-600 hover:text-white dark:hover:bg-pink-600 dark:hover:text-white'
-                  )}
-                >
-                  <FiInstagram size={20} />
-                </a>
+                  platform="instagram"
+                  icon={<FiInstagram size={20} />}
+                  ariaLabel="Visit my Instagram profile"
+                  variant="rounded"
+                />
               </div>
             </div>
           </motion.div>
