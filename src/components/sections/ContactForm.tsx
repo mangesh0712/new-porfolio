@@ -59,6 +59,10 @@ export function ContactForm() {
     }
   };
 
+  const labelClasses = cn(
+    "block text-sm font-medium text-gray-700 dark:text-gray-300",
+  );
+
   const inputClasses = cn(
     "mt-2 w-full rounded-lg border border-gray-300 bg-white px-4 py-3",
     "text-gray-900 placeholder-gray-500 transition-colors",
@@ -76,7 +80,7 @@ export function ContactForm() {
       className="space-y-6 rounded-lg border border-gray-200 bg-gray-50 p-8 dark:border-gray-800 dark:bg-gray-900"
     >
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        <label className={labelClasses}>
           {CONTACT_FORM.LABELS.NAME} <span className="text-red-500">*</span>
         </label>
         <input
@@ -91,7 +95,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        <label className={labelClasses}>
           {CONTACT_FORM.LABELS.EMAIL} <span className="text-red-500">*</span>
         </label>
         <input
@@ -106,7 +110,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        <label className={labelClasses}>
           {CONTACT_FORM.LABELS.SUBJECT}
         </label>
         <input
@@ -121,7 +125,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        <label className={labelClasses}>
           {CONTACT_FORM.LABELS.MESSAGE} <span className="text-red-500">*</span>
         </label>
         <textarea
