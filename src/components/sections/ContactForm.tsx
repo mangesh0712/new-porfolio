@@ -59,6 +59,23 @@ export function ContactForm() {
     }
   };
 
+// Create debounced function with closure
+const printNameAfterDelay = (() => {
+  let timer: number | undefined;
+  return (name: string) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      console.log("Name after delay:", name);
+    }, 1000); // 1 second
+  };
+})();
+
+  const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    printNameAfterDelay(value);
+
+  }
+
   const labelClasses = cn(
     "block text-sm font-medium text-gray-700 dark:text-gray-300",
   );
@@ -85,6 +102,7 @@ export function ContactForm() {
         </label>
         <input
           {...register("name")}
+          onChange={onNameChange}
           type="text"
           placeholder={CONTACT_FORM.PLACEHOLDERS.NAME}
           className={inputClasses}
