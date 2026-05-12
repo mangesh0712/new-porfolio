@@ -1,6 +1,7 @@
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
+import { SectionHeading } from '@/components/common/SectionHeading';
 import { testimonialsData } from '@/data/testimonials';
 import { motion } from 'framer-motion';
 import { FiStar } from 'react-icons/fi';
@@ -19,15 +20,7 @@ export function Testimonials() {
           <Badge variant="accent">Client Feedback</Badge>
         </motion.div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="mb-8 text-center text-4xl font-bold text-gray-900 dark:text-white"
-        >
-          What People Say
-        </motion.h2>
+        <SectionHeading className="mb-8">What People Say</SectionHeading>
 
         {testimonialsData.length > 0 ? (
           <div className="grid gap-8 md:grid-cols-3">

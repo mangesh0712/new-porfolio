@@ -4,6 +4,7 @@ import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
+import { SectionHeading } from '@/components/common/SectionHeading';
 import { projectsData } from '@/data/projects';
 import { motion } from 'framer-motion';
 import { FiGithub, FiExternalLink } from 'react-icons/fi';
@@ -31,15 +32,7 @@ export function Projects() {
           <Badge variant="accent">Featured Work</Badge>
         </motion.div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="mb-12 text-4xl font-bold text-gray-900 dark:text-white"
-        >
-          Projects & Case Studies
-        </motion.h2>
+        <SectionHeading className="mb-12 text-left">Projects & Case Studies</SectionHeading>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

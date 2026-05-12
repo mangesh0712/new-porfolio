@@ -4,6 +4,7 @@ import { FiGithub, FiLinkedin, FiInstagram, FiDownload } from 'react-icons/fi';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
+import { SocialButton } from '@/components/common/SocialButton';
 import { personal } from '@/data/personal';
 import { HERO } from '@/constants';
 import { useEffect, useState } from 'react';
@@ -27,45 +28,27 @@ export function Hero() {
   return (
     <SectionWrapper id="hero" className="flex flex-col justify-center relative">
       <div className="absolute right-6 top-6 hidden flex-col gap-3 lg:flex">
-        <a
+        <SocialButton
           href={personal.socials.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Visit my GitHub profile"
-          className={cn(
-            'rounded-full p-3 transition-all hover:scale-110',
-            'bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
-            'hover:bg-gray-900 hover:text-white dark:hover:bg-gray-900 dark:hover:text-white'
-          )}
-        >
-          <FiGithub size={20} />
-        </a>
-        <a
+          platform="github"
+          icon={<FiGithub size={20} />}
+          ariaLabel="Visit my GitHub profile"
+          variant="circular"
+        />
+        <SocialButton
           href={personal.socials.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Visit my LinkedIn profile"
-          className={cn(
-            'rounded-full p-3 transition-all hover:scale-110',
-            'bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
-            'hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white'
-          )}
-        >
-          <FiLinkedin size={20} />
-        </a>
-        <a
+          platform="linkedin"
+          icon={<FiLinkedin size={20} />}
+          ariaLabel="Visit my LinkedIn profile"
+          variant="circular"
+        />
+        <SocialButton
           href={personal.socials.instagram}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Visit my Instagram profile"
-          className={cn(
-            'rounded-full p-3 transition-all hover:scale-110',
-            'bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
-            'hover:bg-pink-600 hover:text-white dark:hover:bg-pink-600 dark:hover:text-white'
-          )}
-        >
-          <FiInstagram size={20} />
-        </a>
+          platform="instagram"
+          icon={<FiInstagram size={20} />}
+          ariaLabel="Visit my Instagram profile"
+          variant="circular"
+        />
       </div>
       <div className="mx-auto max-w-3xl">
         <motion.div
