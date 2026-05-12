@@ -1,5 +1,6 @@
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { Badge } from "@/components/ui/Badge";
+import { SectionHeading } from "@/components/common/SectionHeading";
 import { motion } from "framer-motion";
 
 export function About() {
@@ -25,15 +26,7 @@ export function About() {
           <Badge variant="accent">My Story</Badge>
         </motion.div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="mb-12 text-4xl font-bold text-gray-900 dark:text-white"
-        >
-          About Me
-        </motion.h2>
+        <SectionHeading className="mb-12 text-left">About Me</SectionHeading>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
