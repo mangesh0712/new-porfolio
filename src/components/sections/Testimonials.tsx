@@ -1,10 +1,10 @@
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { Badge } from '@/components/ui/Badge';
-import { Card } from '@/components/ui/Card';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { testimonialsData } from '@/data/testimonials';
 import { motion } from 'framer-motion';
-import { FiStar } from 'react-icons/fi';
+import { TestimonialCard } from './TestimonialCard';
+import { TestimonialsEmpty } from './TestimonialsEmpty';
 
 export function Testimonials() {
   return (
@@ -32,57 +32,12 @@ export function Testimonials() {
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="flex h-full flex-col">
-                  {testimonial.rating && (
-                    <div className="mb-4 flex gap-1">
-                      {Array.from({ length: testimonial.rating }).map((_, i) => (
-                        <FiStar
-                          key={i}
-                          size={18}
-                          className="fill-cyan-500 text-cyan-500"
-                        />
-                      ))}
-                    </div>
-                  )}
-
-                  <p className="mb-6 flex-1 text-gray-600 dark:text-gray-300">
-                    "{testimonial.quote}"
-                  </p>
-
-                  <div className="flex items-center gap-4 border-t border-gray-200 pt-4 dark:border-gray-800">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="h-12 w-12 rounded-full object-cover"
-                    />
-                    <div>
-                      <p className="font-semibold text-gray-900 dark:text-white">
-                        {testimonial.name}
-                      </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
-                        {testimonial.role} at {testimonial.company}
-                      </p>
-                    </div>
-                  </div>
-                </Card>
+                <TestimonialCard testimonial={testimonial} />
               </motion.div>
             ))}
           </div>
         ) : (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center dark:border-gray-700 dark:bg-gray-800"
-          >
-            <p className="text-lg font-semibold text-gray-600 dark:text-gray-400">
-              Coming Soon
-            </p>
-            <p className="mt-2 text-gray-500 dark:text-gray-400">
-              Testimonials will be added soon. Stay tuned!
-            </p>
-          </motion.div>
+          <TestimonialsEmpty />
         )}
       </div>
     </SectionWrapper>
