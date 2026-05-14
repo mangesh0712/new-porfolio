@@ -5,7 +5,7 @@
 **Primary approach**: Use Tailwind utilities for all styling.
 
 ### Core Rules
-- Use Tailwind first; custom CSS only for global styles or complex animations
+- Use Tailwind first;  custom CSS only for global styles or complex animations
 - Never mix BEM classes with Tailwind in same component
 - Extract repeated patterns to Tailwind `@apply` in global CSS
 - Use Tailwind's spacing scale (4px base): `p-4` (16px), `m-2` (8px)
